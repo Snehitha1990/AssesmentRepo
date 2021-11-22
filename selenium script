@@ -1,0 +1,34 @@
+package asses;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class Asses {
+	public static void main(String[] args) throws InterruptedException 
+	{
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\v snehitha\\chromedriver.exe");
+		ChromeOptions options=new ChromeOptions();
+		options.addArguments("--disable-notifications");
+		WebDriver driver=new ChromeDriver(options);
+		driver.get("https://www.eazydiner.com/");
+		driver.findElement(By.xpath("//*[@id=\'srchbar\']"));
+		driver.findElement(By.xpath("//*[@id=\'srchbar\']")).click();
+		driver.findElement(By.xpath("//*[@id=\"search_city_content\"]/div[1]/ul/li[5]/div/a")).click();
+		driver.findElement(By.xpath("//*[@id=\"home-search\"]")).sendKeys("Delhiwala sweets");
+		driver.findElement(By.xpath("//*[@id=\'home-search\']")).sendKeys(Keys.ENTER);
+		driver.findElement(By.id("apxor_search")).click();
+		System.out.println(driver.getCurrentUrl());
+		driver.findElement(By.xpath("//*[@id=\"login-btn\"]/span")).click();
+		driver.findElement(By.xpath("//*[@id=\'form-mobile\']/div[1]/div/input")).sendKeys("1234567890");
+		driver.findElement(By.xpath("//*[@id='form-mobile']/div[3]/button")).click();
+		driver.navigate().back();
+		driver.navigate().back();
+			driver.findElement(By.xpath("/html/body/div[13]/div/div[1]/div[2]/p[4]/a")).click();
+			driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+			System.out.println(driver.getCurrentUrl());
+			driver.navigate().back();
+	}
+}
